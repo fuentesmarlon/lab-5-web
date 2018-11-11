@@ -1,0 +1,35 @@
+/*Gradiente y fondo*/
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+body{
+    background-color:teal;
+    background-image: linear-gradient(teal,yellow);
+}
+/*titulo*/
+#title{
+    font-family: 'Satisfy', cursive;
+    font-size: 120px;
+    color:white;
+}
+/*chatbox*/
+.chatbox{
+    width: 100%;
+    height:500px;
+    background:rgb(255, 255, 255);
+    margin:0 auto;
+    opacity:0.5;
+    overflow: auto;
+}
+.envio{
+    clear:both;
+}
+#area{
+    width:1400px;
+}
