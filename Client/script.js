@@ -1,14 +1,19 @@
-const url= 'http://34.210.35.174:7000/';
+const url= 'localhost:3000';
 var ul = document.getElementById("mensajeria")
 var input = document.getElementById("area")
 const box = document.querySelector(".chatbox")
 
+const socket = io.connect('http://localhost:3000')
 
 const button = document.getElementById("send").addEventListener("click",function(){
-    mandarMensajes(input.value)
+   // mandarMensajes(input.value)
+   mandarMensajesSocket(input.value)
     })
 
-
+function mandarMensajesSocket(mensaje){
+    socket.emit('chat message',mensaje)
+    input.value = ""
+}
 function mandarMensajes(mensaje){
     var usuario="marlangas"
     const id  = "15240"
@@ -16,11 +21,11 @@ function mandarMensajes(mensaje){
     data.append('student_id',id)
     data.append('nick',usuario)
     data.append('text',mensaje)
-    const otherParam={
+    const postito={
         method:"POST",
         body: data
       }
-      fetch(url,otherParam)
+      fetch(url,postito)
       .then(function(){
         input.value = ""
         box.scrollTop = box.scrollHeight
