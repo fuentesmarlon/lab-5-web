@@ -32,7 +32,8 @@ io.on('connection',function(socket){
 io.on('connection',async function(socket){
     const response = await axios.get(url)
     const message = response.data
-    console.log(message)
+    io.emit('chat message',message)
+
 })
 
 http.listen(3000, function(){

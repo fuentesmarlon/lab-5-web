@@ -32,7 +32,18 @@ function mandarMensajes(mensaje){
         location.reload()
       })
 }
-
+socket.on('chat message',function(msg){
+    msg.forEach(function(element){
+        var nombre = element.nick
+        var msg = element.text
+        var unido = nombre.concat(":",msg)
+        var nodo = document.createTextNode(unido)
+        var li = document.createElement("li")
+        li.appendChild(nodo)
+        ul.appendChild(li)
+    })
+    box.scrollTop = box.scrollHeight
+})
 fetch(url)
     .then(function(retorno){
         return retorno.json(); //json
