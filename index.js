@@ -1,7 +1,8 @@
-const url= 'http://34.210.35.174:7000/';
+const url= 'http://34.210.35.174:7000/'
 var FormData = require('form-data')
 var fs = require('fs')
 var fetch = require('node-fetch')
+const axios = require('axios')
 
 var app =require('express')();
 var http = require('http').Server(app)
@@ -26,6 +27,12 @@ io.on('connection',function(socket){
           }
           fetch(url,postito)
     })
+})
+
+io.on('connection',async function(socket){
+    const response = await axios.get(url)
+    const message = response.data
+    console.log(message)
 })
 
 http.listen(3000, function(){
